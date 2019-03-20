@@ -2,6 +2,7 @@
 
 > [个推](https://www.getui.com/cn/index.html)非官方 SDK
 
+[![Build Status](https://travis-ci.com/gophers-coder/getui-sdk-go.svg?branch=master)](https://travis-ci.com/gophers-coder/getui-sdk-go)
 
 ## 0. Install
 
