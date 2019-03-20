@@ -1,10 +1,10 @@
 package getui
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
-	"spark-url/utils/json"
 )
 
 type ConfigAccount struct {
