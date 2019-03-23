@@ -1,4 +1,4 @@
-FROM golang:master
+FROM golang:1.11
 
 LABEL MAINTAINER="xieWei(wuxiaoshen@shu.edu.cn)"
 
