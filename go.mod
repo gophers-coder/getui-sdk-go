@@ -1,1 +1,1 @@
-module github.com/gophers-coder/getui-sdk-go/getui
+module github.com/gophers-coder/getui-sdk-go
