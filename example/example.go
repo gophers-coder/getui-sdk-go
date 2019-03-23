@@ -1,11 +1,10 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"os"
 	"time"
-
-	"github.com/gin-gonic/gin/json"
 
 	"github.com/gophers-coder/getui-sdk-go/getui"
 )
