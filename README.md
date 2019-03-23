@@ -7,7 +7,7 @@
 ## 0. Install
 
 ``` 
-go get -u -v github.com/gophers-coder/getui-sdk-go/getui/...
+go get -u -v github.com/gophers-coder/getui-sdk-go/...
 ```
 
 ## 1. Usage
