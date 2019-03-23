@@ -7,14 +7,15 @@ import (
 	"net/http"
 )
 
-type ConfigAccount struct {
+type Account struct {
 	AppID        string
 	AppSecret    string
 	AppKey       string
 	MasterSecret string
+	Auth         string
 }
 
-func NewGetUiAccount(AppID string, AppSecret string, AppKey string, MasterSecret string) *ConfigAccount {
+func NewGetUiAccount(AppID string, AppSecret string, AppKey string, MasterSecret string) *Account {
 	var (
 		id           string
 		secret       string
@@ -25,7 +26,7 @@ func NewGetUiAccount(AppID string, AppSecret string, AppKey string, MasterSecret
 	secret = valueOrEnv(AppSecret, 1)
 	key = valueOrEnv(AppKey, 2)
 	masterSecret = valueOrEnv(MasterSecret, 3)
-	return &ConfigAccount{
+	return &Account{
 		AppID:        id,
 		AppSecret:    secret,
 		AppKey:       key,
@@ -33,7 +34,8 @@ func NewGetUiAccount(AppID string, AppSecret string, AppKey string, MasterSecret
 	}
 }
 
-func (c ConfigAccount) AuthSign() map[string]string {
+// AuthSign
+func (c *Account) AuthSign() map[string]string {
 	timestamp := timeStamp()
 	signString := sign(c.AppKey, timestamp, c.MasterSecret)
 
@@ -51,13 +53,17 @@ func (c ConfigAccount) AuthSign() map[string]string {
 
 	var result map[string]string
 	json.Unmarshal(content, &result)
+	if result["result"] == "ok" {
+		c.Auth = result["auth_token"]
+	}
 	return result
 
 }
 
-func (c ConfigAccount) AuthClose(auth string) map[string]string {
+// AuthClose
+func (c Account) AuthClose() map[string]string {
 	headers := http.Header{
-		"authtoken": []string{auth},
+		"authtoken": []string{c.Auth},
 	}
 	request, err := request(http.MethodPost, fmt.Sprintf(AUTHCLOSE, c.AppID), headers, nil)
 

@@ -20,6 +20,9 @@ func request(method string, url string, header http.Header, body interface{}) (*
 
 	var request *http.Request
 
+	//if bytes.NewBuffer([]byte(content)) != nil {
+	//	fmt.Println(bytes.NewBuffer([]byte(content)))
+	//}
 	if body != nil {
 		request, err = http.NewRequest(method, url, bytes.NewBuffer([]byte(content)))
 	} else {

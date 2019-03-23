@@ -1,4 +1,4 @@
-PROJECTNAME="getui-sdk"
+PROJECTNAME="getui-sdk-go"
 
 
 

@@ -15,5 +15,14 @@ before_install:
   - go test -cpu=1,2,4 -v -tags integration ./...
   - go vet $(go list ./... | grep -v /vendor/)
 
-script: true
+before_script:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+script:
+  - echo "Hello getui-sdk-go"
+
+
+after_success:
+  - docker build -t wuxiaoshen/getui-sdk-go:latest .
+  - docker push wuxiaoshen/getui-sdk-go:latest
 
