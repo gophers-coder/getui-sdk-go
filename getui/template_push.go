@@ -84,6 +84,17 @@ func NewSaveListBodyContent(params PushSingleParams) SaveListBodyContent {
 	}
 }
 
+func SaveListBodyContentByMap(params map[string]string) SaveListBodyContent {
+	return SaveListBodyContent{
+		Message: Message{params["appkey"], true, 10000000, "notification"},
+		Notification: Notification{
+			Style:               Style{0, params["text"], params["title"]},
+			TransmissionType:    true,
+			TransmissionContent: params["transmission_content"],
+		},
+	}
+}
+
 var SaveListBody = `
 {
                    "message": {
