@@ -1,6 +1,6 @@
 # GetUI-SDK
 
-> [个推](https://www.getui.com/cn/index.html)非官方 SDK
+> [个推](https://www.getui.com/cn/index.html)非官方 SDK, 第四期
 
 [![Build Status](https://travis-ci.com/gophers-coder/getui-sdk-go.svg?branch=master)](https://travis-ci.com/gophers-coder/getui-sdk-go)
 
